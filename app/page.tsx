@@ -118,7 +118,7 @@ export default function Home() {
             <h3>Web development</h3>
             <a href="https://www.udemy.com/course/the-complete-web-development-bootcamp/">
               <Image
-                src="/img/webDev.png"
+                src="/img/web-dev.png"
                 alt="Web development course"
                 width={300}
                 height={200}
@@ -153,7 +153,7 @@ export default function Home() {
             <h3>Data structure</h3>
             <a href="https://www.udemy.com/course/data-structures-and-algorithms-bootcamp-in-python/">
               <Image
-                src="/img/dataStru.png"
+                src="/img/data-structure.png"
                 alt="Data structure course"
                 width={300}
                 height={200}
@@ -179,7 +179,7 @@ export default function Home() {
             <h3>AtCoder</h3>
             <p>
               <Image
-                src="/img/AtCoder.png"
+                src="/img/at-coder.png"
                 alt="AtCoder"
                 width={100}
                 height={100}
@@ -219,7 +219,7 @@ export default function Home() {
             <h3>CodeForce</h3>
             <p>
               <Image
-                src="/img/Codeforce_logo.png"
+                src="/img/codeforce-logo.png"
                 alt="CodeForce"
                 width={100}
                 height={100}
