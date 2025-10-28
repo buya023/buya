@@ -1,65 +1,275 @@
 import Image from "next/image";
+import { SiLeetcode } from "react-icons/si";
 
 export default function Home() {
   return (
-    <div className="flex min-h-screen items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex min-h-screen w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the page.tsx file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
+    <div>
+      <ul className="sticky" id="mainMenu">
+        <li className="mainMenuList">
+          <a href="#home">Home</a>
+        </li>
+        <li className="mainMenuList">
+          <a href="#project">Project</a>
+        </li>
+        <li className="mainMenuList">
+          <a href="#class">Online class</a>
+        </li>
+        <li className="mainMenuList">
+          <a href="#competition">Competition</a>
+        </li>
+        <li className="mainMenuList">
+          <a href="#about">About me</a>
+        </li>
+        <li className="mainMenuList">
+          <a href="/blogs/blogs.html">Blog</a>
+        </li>
+      </ul>
+
+      {/* Introduction */}
+      <section className="intro" id="home">
+        <h1 className="section__title section__title--intro">
+          Hi, I am <strong>Buya</strong>
+        </h1>
+        <p className="section__subtitle section__subtitle--intro">
+          Software engineer
+        </p>
+        <div className="ani" />
+      </section>
+
+      {/* My projects */}
+      <section className="my-services" id="project">
+        <h2 className="section__title section__title--services">My projects</h2>
+        <div className="services">
+          <div className="service">
+            <h3>
+              <a
+                href="https://github.com/Buya023/PersonalWebSite"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="gameName"
+              >
+                Flappy bird
+              </a>
+            </h3>
             <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
+              href="https://github.com/Buya023/PersonalWebSite"
+              target="_blank"
+              rel="noopener noreferrer"
             >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
-          </p>
-        </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
+              <Image
+                src="/img/flappy.png"
+                alt="Flappy bird project"
+                width={300}
+                height={240}
+                className="projectPic"
+              />
+            </a>
+            <p>The flappy bird made by PyGame and 100% Python3.</p>
+          </div>
+
+          <div className="service">
+            <h3>Drum kit</h3>
             <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
+              src="/img/drum.png"
+              alt="Drum kit"
+              width={300}
+              height={240}
+              className="projectPic"
             />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
+            <p>
+              Make sounds of the instruments in pictures by clicking the w, a,
+              s, d, j, k, l buttons in keyboard. Mostly made by html and css
+            </p>
+          </div>
+
+          <div className="service">
+            <h3>Dice game</h3>
+            <Image
+              src="/img/dicee.png"
+              alt="Dice game"
+              width={300}
+              height={240}
+              className="projectPic"
+            />
+            <p>
+              The game start by clicking space bar and ultimately show a result.
+              Mostly made by css and html.
+            </p>
+          </div>
         </div>
-      </main>
+
+        <a
+          href="https://github.com/Buya023?tab=repositories"
+          className="btn"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          My Projects
+        </a>
+      </section>
+
+      {/* Online courses */}
+      <section className="onlineClass" id="class">
+        <h2 className="section__title course__title--services">
+          My online courses
+        </h2>
+        <div className="services">
+          <div className="service">
+            <h3>Web development</h3>
+            <a href="https://www.udemy.com/course/the-complete-web-development-bootcamp/">
+              <Image
+                src="/img/webDev.png"
+                alt="Web development course"
+                width={300}
+                height={200}
+                className="projectPic"
+              />
+            </a>
+            <p>
+              I learned basics of web development. I learned CSS, HTML, NODE,
+              REACT etc
+            </p>
+          </div>
+
+          <div className="service">
+            <h3>Python хэл - Програмчлалын суурь ойлголт</h3>
+            <a href="https://melearn.mn/course/python">
+              <Image
+                src="/img/python.png"
+                alt="Python course"
+                width={300}
+                height={200}
+                className="projectPic"
+              />
+            </a>
+            <p>
+              I learned basics of programing and intermediate Python. I utilized
+              libraries such as PyGame and Turtle. I solved numerous quizzes. I
+              developed a functional Flappy Bird game as a capstone project.
+            </p>
+          </div>
+
+          <div className="service">
+            <h3>Data structure</h3>
+            <a href="https://www.udemy.com/course/data-structures-and-algorithms-bootcamp-in-python/">
+              <Image
+                src="/img/dataStru.png"
+                alt="Data structure course"
+                width={300}
+                height={200}
+                className="projectPic"
+              />
+            </a>
+            <p>
+              I took the course to learn various ways to solve coding problems.
+              also, it will helps me to develop myself to become better problem
+              solver
+            </p>
+          </div>
+        </div>
+      </section>
+
+      {/* Competitions */}
+      <section className="my-services" id="competition">
+        <h2 className="section__title section__title--services">
+          Coding competition
+        </h2>
+        <div className="services">
+          <div className="service">
+            <h3>AtCoder</h3>
+            <p>
+              <Image
+                src="/img/AtCoder.png"
+                alt="AtCoder"
+                width={100}
+                height={100}
+                style={{ margin: "20px auto", display: "block" }}
+              />
+            </p>
+            <a
+              href="https://atcoder.jp/users/Buya"
+              className="btn"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Click here to see AtCoder
+            </a>
+          </div>
+
+          <div className="service">
+            <h3>Leetcode</h3>
+            <Image
+              src="/img/LeetCode_logo_black.png"
+              alt="LeetCode"
+              width={100}
+              height={100}
+              style={{ margin: "20px auto", display: "block" }}
+            />
+            <a
+              href="https://leetcode.com/Buyanjargargal/"
+              className="btn"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Click here to see Leetcode
+            </a>
+          </div>
+
+          <div className="service">
+            <h3>CodeForce</h3>
+            <p>
+              <Image
+                src="/img/Codeforce_logo.png"
+                alt="CodeForce"
+                width={100}
+                height={100}
+                style={{ margin: "20px auto", display: "block" }}
+              />
+            </p>
+            <a
+              href="https://codeforces.com/profile/buya4"
+              className="btn"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Click here to see CodeForce
+            </a>
+          </div>
+        </div>
+      </section>
+
+      {/* Footer */}
+      <footer className="footer">
+        <a href="mailto:buyanjargal023@gmail.com" className="footer__link">
+          Contact Me
+        </a>
+        <ul className="social-list">
+          <li className="social-list__item">
+            <a
+              className="social-list__link"
+              href="https://leetcode.com/Buyanjargargal/"
+            >
+              <SiLeetcode />
+            </a>
+          </li>
+          <li className="social-list__item">
+            <a
+              className="social-list__link"
+              href="https://www.linkedin.com/in/buyanjargargal-tserendendev-21a495227/"
+            >
+              <i className="fab fa-linkedin"></i>
+            </a>
+          </li>
+          <li className="social-list__item">
+            <a
+              className="social-list__link"
+              href="https://github.com/Buya023?tab=repositories"
+            >
+              <i className="fab fa-github"></i>
+            </a>
+          </li>
+        </ul>
+      </footer>
     </div>
   );
 }
