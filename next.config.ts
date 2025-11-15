@@ -1,7 +1,11 @@
-import type { NextConfig } from "next";
+import { join } from "path";
 
-const nextConfig: NextConfig = {
-  /* config options here */
+const nextConfig = {
+  experimental: { turbo: true },
+  webpack: (config) => {
+    config.resolve.alias["@"] = join(__dirname);
+    return config;
+  },
 };
 
 export default nextConfig;
