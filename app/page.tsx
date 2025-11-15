@@ -1,274 +1,278 @@
+"use client";
+
 import Image from "next/image";
-import { SiLeetcode } from "react-icons/si";
+import { useRef } from "react";
+import { Button } from "@/components/ui/button";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Separator } from "@/components/ui/separator";
+import {
+  NavigationMenu,
+  NavigationMenuItem,
+  NavigationMenuList,
+  NavigationMenuTrigger,
+  NavigationMenuContent,
+} from "@/components/ui/navigation-menu";
+import { SiLeetcode, SiGithub, SiLinkedin } from "react-icons/si";
 
 export default function Home() {
+  const homeRef = useRef<HTMLDivElement>(null);
+  const aboutRef = useRef<HTMLDivElement>(null);
+  const projectsRef = useRef<HTMLDivElement>(null);
+  const coursesRef = useRef<HTMLDivElement>(null);
+  const competitionRef = useRef<HTMLDivElement>(null);
+
+  const scrollToSection = (ref: React.RefObject<HTMLDivElement>) => {
+    ref.current?.scrollIntoView({ behavior: "smooth" });
+  };
+
   return (
-    <div>
-      <ul className="sticky" id="mainMenu">
-        <li className="mainMenuList">
-          <a href="#home">Home</a>
-        </li>
-        <li className="mainMenuList">
-          <a href="#project">Project</a>
-        </li>
-        <li className="mainMenuList">
-          <a href="#class">Online class</a>
-        </li>
-        <li className="mainMenuList">
-          <a href="#competition">Competition</a>
-        </li>
-        <li className="mainMenuList">
-          <a href="#about">About me</a>
-        </li>
-        <li className="mainMenuList">
-          <a href="/blogs/blogs.html">Blog</a>
-        </li>
-      </ul>
+    <div className="flex flex-col items-center bg-gray-50 text-gray-800">
+      {/* NAVBAR */}
+      <nav className="w-full sticky top-0 z-20 bg-white/80 backdrop-blur-md border-b">
+        <div className="max-w-6xl mx-auto flex justify-between items-center px-6 py-4">
+          <span className="text-xl font-bold text-teal-600">Buya.dev</span>
 
-      {/* Introduction */}
-      <section className="intro" id="home">
-        <h1 className="section__title section__title--intro">
-          Hi, I am <strong>Buya</strong>
-        </h1>
-        <p className="section__subtitle section__subtitle--intro">
-          Software engineer
+          <NavigationMenu>
+            <NavigationMenuList>
+              <NavigationMenuItem>
+                <NavigationMenuTrigger>Menu</NavigationMenuTrigger>
+                <NavigationMenuContent className="p-4 bg-white rounded-lg shadow-md">
+                  <div className="flex flex-col gap-2">
+                    {[
+                      ["Home", homeRef],
+                      ["About", aboutRef],
+                      ["Projects", projectsRef],
+                      ["Courses", coursesRef],
+                      ["Competition", competitionRef],
+                    ].map(([label, ref], idx) => (
+                      <button
+                        key={idx}
+                        onClick={() =>
+                          scrollToSection(
+                            ref as React.RefObject<HTMLDivElement>
+                          )
+                        }
+                        className="text-left text-gray-700 hover:text-teal-500 transition-colors"
+                      >
+                        {label}
+                      </button>
+                    ))}
+                    <a
+                      href="/blog"
+                      className="text-gray-700 hover:text-teal-500 transition-colors"
+                    >
+                      Blog
+                    </a>
+                  </div>
+                </NavigationMenuContent>
+              </NavigationMenuItem>
+            </NavigationMenuList>
+          </NavigationMenu>
+        </div>
+      </nav>
+
+      {/* HERO / ABOUT */}
+      <section
+        ref={aboutRef}
+        className="w-full pt-28 pb-16 text-center max-w-4xl mx-auto px-6"
+      >
+        <h1 className="text-5xl font-bold mb-4 text-teal-600">Hi, I’m Buya</h1>
+        <p className="text-lg text-gray-600 mb-6">
+          Software Engineer • Problem Solver • Learner
         </p>
-        <div className="ani" />
-      </section>
-
-      {/* My projects */}
-      <section className="my-services" id="project">
-        <h2 className="section__title section__title--services">My projects</h2>
-        <div className="services">
-          <div className="service">
-            <h3>
-              <a
-                href="https://github.com/Buya023/PersonalWebSite"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="gameName"
-              >
-                Flappy bird
-              </a>
-            </h3>
-            <a
-              href="https://github.com/Buya023/PersonalWebSite"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <Image
-                src="/img/flappy.png"
-                alt="Flappy bird project"
-                width={300}
-                height={240}
-                className="projectPic"
-              />
-            </a>
-            <p>The flappy bird made by PyGame and 100% Python3.</p>
-          </div>
-
-          <div className="service">
-            <h3>Drum kit</h3>
-            <Image
-              src="/img/drum.png"
-              alt="Drum kit"
-              width={300}
-              height={240}
-              className="projectPic"
-            />
-            <p>
-              Make sounds of the instruments in pictures by clicking the w, a,
-              s, d, j, k, l buttons in keyboard. Mostly made by html and css
-            </p>
-          </div>
-
-          <div className="service">
-            <h3>Dice game</h3>
-            <Image
-              src="/img/dicee.png"
-              alt="Dice game"
-              width={300}
-              height={240}
-              className="projectPic"
-            />
-            <p>
-              The game start by clicking space bar and ultimately show a result.
-              Mostly made by css and html.
-            </p>
-          </div>
-        </div>
-
-        <a
-          href="https://github.com/Buya023?tab=repositories"
-          className="btn"
-          target="_blank"
-          rel="noopener noreferrer"
+        <p className="text-gray-700 mb-6">
+          I’m specialized in mobile and backend development. I build
+          user-focused applications, streamline workflows, and solve complex
+          problems. I enjoy experimenting with new technologies and continuously
+          improving through projects, online courses, and coding challenges.
+        </p>
+        <Button
+          asChild
+          variant="default"
+          className="bg-teal-500 hover:bg-teal-600 text-white"
         >
-          My Projects
-        </a>
+          <a href="mailto:buyanjargal023@gmail.com">Contact Me</a>
+        </Button>
       </section>
 
-      {/* Online courses */}
-      <section className="onlineClass" id="class">
-        <h2 className="section__title course__title--services">
-          My online courses
-        </h2>
-        <div className="services">
-          <div className="service">
-            <h3>Web development</h3>
-            <a href="https://www.udemy.com/course/the-complete-web-development-bootcamp/">
-              <Image
-                src="/img/web-dev.png"
-                alt="Web development course"
-                width={300}
-                height={200}
-                className="projectPic"
-              />
-            </a>
-            <p>
-              I learned basics of web development. I learned CSS, HTML, NODE,
-              REACT etc
-            </p>
-          </div>
+      <Separator className="my-12 max-w-4xl" />
 
-          <div className="service">
-            <h3>Python хэл - Програмчлалын суурь ойлголт</h3>
-            <a href="https://melearn.mn/course/python">
-              <Image
-                src="/img/python.png"
-                alt="Python course"
-                width={300}
-                height={200}
-                className="projectPic"
-              />
-            </a>
-            <p>
-              I learned basics of programing and intermediate Python. I utilized
-              libraries such as PyGame and Turtle. I solved numerous quizzes. I
-              developed a functional Flappy Bird game as a capstone project.
-            </p>
+      {/* PROJECTS */}
+      <section ref={projectsRef} className="w-full py-16 bg-white">
+        <div className="max-w-6xl mx-auto px-6">
+          <h2 className="text-3xl font-bold text-center text-teal-600 mb-12">
+            My Projects
+          </h2>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            {[
+              [
+                "Flappy Bird",
+                "/img/flappy.png",
+                "A Python PyGame project of the classic game.",
+              ],
+              [
+                "Drum Kit",
+                "/img/drum.png",
+                "Press W A S D J K L to play drum sounds.",
+              ],
+              [
+                "Dice Game",
+                "/img/dicee.png",
+                "Spacebar triggers the game and shows a result.",
+              ],
+            ].map(([title, src, desc], idx) => (
+              <Card
+                key={idx}
+                className="shadow-lg hover:shadow-xl transition-shadow rounded-xl"
+              >
+                <CardHeader>
+                  <CardTitle>{title}</CardTitle>
+                </CardHeader>
+                <CardContent>
+                  <Image
+                    src={src}
+                    alt={title}
+                    width={300}
+                    height={200}
+                    className="rounded-lg mx-auto"
+                  />
+                  <p className="mt-4 text-gray-600">{desc}</p>
+                </CardContent>
+              </Card>
+            ))}
           </div>
-
-          <div className="service">
-            <h3>Data structure</h3>
-            <a href="https://www.udemy.com/course/data-structures-and-algorithms-bootcamp-in-python/">
-              <Image
-                src="/img/data-structure.png"
-                alt="Data structure course"
-                width={300}
-                height={200}
-                className="projectPic"
-              />
-            </a>
-            <p>
-              I took the course to learn various ways to solve coding problems.
-              also, it will helps me to develop myself to become better problem
-              solver
-            </p>
+          <div className="flex justify-center mt-10">
+            <Button asChild variant="outline">
+              <a
+                href="https://github.com/Buya023?tab=repositories"
+                target="_blank"
+              >
+                View All Projects
+              </a>
+            </Button>
           </div>
         </div>
       </section>
 
-      {/* Competitions */}
-      <section className="my-services" id="competition">
-        <h2 className="section__title section__title--services">
-          Coding competition
-        </h2>
-        <div className="services">
-          <div className="service">
-            <h3>AtCoder</h3>
-            <p>
-              <Image
-                src="/img/at-coder.png"
-                alt="AtCoder"
-                width={100}
-                height={100}
-                style={{ margin: "20px auto", display: "block" }}
-              />
-            </p>
-            <a
-              href="https://atcoder.jp/users/Buya"
-              className="btn"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Click here to see AtCoder
-            </a>
-          </div>
+      <Separator className="my-12 max-w-4xl" />
 
-          <div className="service">
-            <h3>Leetcode</h3>
-            <Image
-              src="/img/LeetCode_logo_black.png"
-              alt="LeetCode"
-              width={100}
-              height={100}
-              style={{ margin: "20px auto", display: "block" }}
-            />
-            <a
-              href="https://leetcode.com/Buyanjargargal/"
-              className="btn"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Click here to see Leetcode
-            </a>
-          </div>
-
-          <div className="service">
-            <h3>CodeForce</h3>
-            <p>
-              <Image
-                src="/img/codeforce-logo.png"
-                alt="CodeForce"
-                width={100}
-                height={100}
-                style={{ margin: "20px auto", display: "block" }}
-              />
-            </p>
-            <a
-              href="https://codeforces.com/profile/buya4"
-              className="btn"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Click here to see CodeForce
-            </a>
+      {/* COURSES */}
+      <section ref={coursesRef} className="w-full py-16 bg-gray-50">
+        <div className="max-w-6xl mx-auto px-6">
+          <h2 className="text-3xl font-bold text-center text-teal-600 mb-12">
+            My Online Courses
+          </h2>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            {[
+              [
+                "Web Development Bootcamp",
+                "/img/web-dev.png",
+                "HTML, CSS, JS, React, Node basics.",
+              ],
+              [
+                "Python Fundamentals",
+                "/img/python.png",
+                "Python basics and Pygame projects.",
+              ],
+              [
+                "Data Structures",
+                "/img/data-structure.png",
+                "Efficient problem solving approaches.",
+              ],
+            ].map(([title, src, desc], idx) => (
+              <Card
+                key={idx}
+                className="shadow-lg hover:shadow-xl transition-shadow rounded-xl"
+              >
+                <CardHeader>
+                  <CardTitle>{title}</CardTitle>
+                </CardHeader>
+                <CardContent>
+                  <Image
+                    src={src}
+                    alt={title}
+                    width={300}
+                    height={200}
+                    className="rounded-lg mx-auto"
+                  />
+                  <p className="mt-4 text-gray-600">{desc}</p>
+                </CardContent>
+              </Card>
+            ))}
           </div>
         </div>
       </section>
 
-      {/* Footer */}
-      <footer className="footer">
-        <a href="mailto:buyanjargal023@gmail.com" className="footer__link">
-          Contact Me
-        </a>
-        <ul className="social-list">
-          <li className="social-list__item">
-            <a
-              className="social-list__link"
-              href="https://leetcode.com/Buyanjargargal/"
-            >
-              <SiLeetcode />
-            </a>
-          </li>
-          <li className="social-list__item">
-            <a
-              className="social-list__link"
-              href="https://www.linkedin.com/in/buyanjargargal-tserendendev-21a495227/"
-            >
-              <i className="fab fa-linkedin"></i>
-            </a>
-          </li>
-          <li className="social-list__item">
-            <a
-              className="social-list__link"
-              href="https://github.com/Buya023?tab=repositories"
-            >
-              <i className="fab fa-github"></i>
-            </a>
-          </li>
-        </ul>
+      <Separator className="my-12 max-w-4xl" />
+
+      {/* COMPETITION */}
+      <section ref={competitionRef} className="w-full py-16 bg-white">
+        <div className="max-w-6xl mx-auto px-6">
+          <h2 className="text-3xl font-bold text-center text-teal-600 mb-12">
+            Coding Competition Profiles
+          </h2>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            {[
+              ["AtCoder", "/img/at-coder.png", "https://atcoder.jp/users/Buya"],
+              [
+                "LeetCode",
+                "/img/LeetCode_logo_black.png",
+                "https://leetcode.com/Buyanjargal/",
+              ],
+              [
+                "Codeforces",
+                "/img/codeforce-logo.png",
+                "https://codeforces.com/profile/buya4",
+              ],
+            ].map(([title, src, link], idx) => (
+              <Card
+                key={idx}
+                className="text-center shadow-lg hover:shadow-xl transition-shadow rounded-xl"
+              >
+                <CardHeader>
+                  <CardTitle>{title}</CardTitle>
+                </CardHeader>
+                <CardContent>
+                  <Image
+                    src={src}
+                    alt={title}
+                    width={80}
+                    height={80}
+                    className="mx-auto mb-4"
+                  />
+                  <Button asChild>
+                    <a
+                      href={link}
+                      target="_blank"
+                      className="bg-teal-500 hover:bg-teal-600 text-white rounded-lg px-4 py-2 transition-colors"
+                    >
+                      View Profile
+                    </a>
+                  </Button>
+                </CardContent>
+              </Card>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* FOOTER */}
+      <footer className="w-full py-14 border-t text-center bg-gray-50 text-gray-700">
+        <p>© {new Date().getFullYear()} Buya — All rights reserved.</p>
+        <div className="flex justify-center gap-6 mt-4">
+          <a href="https://leetcode.com/Buyanjargal/" target="_blank">
+            <SiLeetcode className="text-2xl text-teal-600 hover:text-teal-500 transition-colors" />
+          </a>
+          <a
+            href="https://www.linkedin.com/in/Buyanjargal-tserendendev-21a495227/"
+            target="_blank"
+          >
+            <SiLinkedin className="text-2xl text-teal-600 hover:text-teal-500 transition-colors" />
+          </a>
+          <a href="https://github.com/Buya023?tab=repositories" target="_blank">
+            <SiGithub className="text-2xl text-teal-600 hover:text-teal-500 transition-colors" />
+          </a>
+        </div>
       </footer>
     </div>
   );
