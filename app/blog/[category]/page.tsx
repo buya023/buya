@@ -1,19 +1,19 @@
 import Link from "next/link";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { allBlogs } from "../data/blog";
+import { allBlogs, BlogCategory } from "../data/blog";
 
 interface Props {
   params: { category: string };
 }
 
 export default async function CategoryPage({ params }: Props) {
-  const { category } = await params; 
+  const { category } = await params;
 
   if (!category) {
     return <p className="text-center mt-20">Category not found</p>;
   }
-
-  const blogs = allBlogs[category] || [];
+  const cat = params.category as BlogCategory;
+  const blogs = Array.isArray(allBlogs[cat]) ? allBlogs[cat] : [];
 
   return (
     <div className="flex flex-col items-center bg-gray-50 text-gray-800 min-h-screen">
@@ -39,7 +39,7 @@ export default async function CategoryPage({ params }: Props) {
                 <p className="text-sm text-gray-400 mt-2">{blog.date}</p>
                 <div className="flex justify-center mt-4">
                   <Link
-                     href={`/blog/${category}/${blog.slug}`}
+                    href={`/blog/${category}/${blog.slug}`}
                     className="bg-teal-500 hover:bg-teal-600 text-white px-4 py-2 rounded-lg transition-colors"
                   >
                     Read Blog

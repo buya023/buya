@@ -38,13 +38,15 @@ export default function Home() {
                 <NavigationMenuTrigger>Menu</NavigationMenuTrigger>
                 <NavigationMenuContent className="p-4 bg-white rounded-lg shadow-md">
                   <div className="flex flex-col gap-2">
-                    {[
-                      ["Home", homeRef],
-                      ["About", aboutRef],
-                      ["Projects", projectsRef],
-                      ["Courses", coursesRef],
-                      ["Competition", competitionRef],
-                    ].map(([label, ref], idx) => (
+                    {(
+                      [
+                        ["Home", homeRef],
+                        ["About", aboutRef],
+                        ["Projects", projectsRef],
+                        ["Courses", coursesRef],
+                        ["Competition", competitionRef],
+                      ] as [string, React.RefObject<HTMLDivElement>][]
+                    ).map(([label, ref], idx) => (
                       <button
                         key={idx}
                         onClick={() =>
