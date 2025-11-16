@@ -12,7 +12,7 @@ export default async function CategoryPage({ params }: Props) {
   if (!category) {
     return <p className="text-center mt-20">Category not found</p>;
   }
-  const cat = params.category as BlogCategory;
+  const cat = category as BlogCategory;
   const blogs = Array.isArray(allBlogs[cat]) ? allBlogs[cat] : [];
 
   return (
