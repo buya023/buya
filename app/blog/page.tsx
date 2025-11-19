@@ -18,7 +18,7 @@ export default function BlogPage() {
     {
       name: "Books & Learning",
       description: "Other tech books and learning experiences.",
-      slug: "books",
+      slug: "learning",
     },
   ];
 

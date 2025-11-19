@@ -3,6 +3,12 @@ import { Chap1Blog } from "./chap_1";
 import { Chap2Blog } from "./chap_2";
 import { ChapUseFormBlog } from "./learning/useform";
 import { ChapHeapBlog } from "./leetcode/heap";
+import { ChapKeychainBlog } from "./learning/keychain";
+import { S3GetObjectBlog } from "./learning/aws";
+import { RtkIsErrorInterceptorBlog } from "./learning/ErrorInterceptor";
+import { SymfonyUserCacheClearBlog } from "./learning/CacheClear";
+import { SymfonyRedisUserCacheBlog } from "./learning/redis";
+import { SymfonyFaviconBlog } from "./learning/favicon";
 
 export type BlogEntry = {
   title: string;
@@ -51,6 +57,53 @@ export const allBlogs: Record<BlogCategory, BlogEntry[]> = {
       date: "May 2025",
       component: ChapUseFormBlog,
     },
+    {
+      title: "Deep Dive into React Native Keychain",
+      description:
+        "Securely store user credentials and implement biometric login in React Native apps using react-native-keychain.",
+      slug: "react-native-keychain",
+      date: "November 2025",
+      component: ChapKeychainBlog,
+    },
+    {
+      title: "AWS S3 ",
+      description: "Using AWS S3 to Fetch Images in PHP/Symfony",
+      slug: "aws-s3-getobject-php-symfony",
+      date: "November 2025",
+      component: S3GetObjectBlog,
+    },
+    {
+      title: "RTK Query isError + interceptor",
+      description:
+        "Handling global error states in Redux Toolkit Query with interceptors.",
+      slug: "rtk-query-iserror-interceptor",
+      date: "November 2025",
+      component: RtkIsErrorInterceptorBlog,
+    },
+    {
+      title: "Clearing User Cache After Updates in Symfony",
+      description:
+        "Best practices for managing and clearing user cache in Symfony applications after data updates.",
+      slug: "symfony-clear-user-cache",
+      date: "November 2025",
+      component: SymfonyUserCacheClearBlog,
+    },
+    {
+      title: "How We Use Redis to Cache User Information in Symfony",
+      description:
+        "Implementing Redis caching for user profiles in Symfony applications to enhance performance and scalability.",
+      slug: "redis-cache-user-info-symfony",
+      date: "November 2025",
+      component: SymfonyRedisUserCacheBlog,
+    },
+    {
+      title: "Understanding Favicon Usage in Symfony",
+      description:
+        "A guide to implementing and managing favicons in Symfony applications",
+      slug: "favicon-usage-symfony",
+      date: "November 2025",
+      component: SymfonyFaviconBlog,
+    }
   ],
 };
 
