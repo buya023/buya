@@ -9,6 +9,9 @@ import { RtkIsErrorInterceptorBlog } from "./learning/ErrorInterceptor";
 import { SymfonyUserCacheClearBlog } from "./learning/CacheClear";
 import { SymfonyRedisUserCacheBlog } from "./learning/redis";
 import { SymfonyFaviconBlog } from "./learning/favicon";
+import { CtfEverythingBlog } from "./security/ctf_everything";
+import { CtfFirstCompBlog } from "./security/ctf_first_comp";
+import { AzureLivenessBlog } from "./learning/azure_liveness";
 
 export type BlogEntry = {
   title: string;
@@ -18,7 +21,7 @@ export type BlogEntry = {
   component: () => JSX.Element;
 };
 
-export type BlogCategory = "system-design" | "leetcode" | "learning";
+export type BlogCategory = "system-design" | "leetcode" | "learning" | "security";
 
 export const allBlogs: Record<BlogCategory, BlogEntry[]> = {
   "system-design": [
@@ -66,11 +69,18 @@ export const allBlogs: Record<BlogCategory, BlogEntry[]> = {
       component: ChapKeychainBlog,
     },
     {
-      title: "AWS S3 ",
+      title: "AWS S3",
       description: "Using AWS S3 to Fetch Images in PHP/Symfony",
       slug: "aws-s3-getobject-php-symfony",
       date: "November 2025",
       component: S3GetObjectBlog,
+    },
+    {
+      title: "Integrating Azure AI Vision Face Liveness SDK",
+      description: "Technical guide for integrating Azure's Face Liveness SDK on iOS and Android with production tips.",
+      slug: "azure-face-liveness-sdk-integration",
+      date: "April 2026",
+      component: AzureLivenessBlog,
     },
     {
       title: "RTK Query isError + interceptor",
@@ -104,6 +114,22 @@ export const allBlogs: Record<BlogCategory, BlogEntry[]> = {
       date: "November 2025",
       component: SymfonyFaviconBlog,
     }
+  ],
+  "security": [
+    {
+      title: "Attack & Defense CTF: Everything You Need to Know",
+      description: "A comprehensive guide to Attack & Defense CTF competitions, covering common vulnerabilities and strategies.",
+      slug: "ctf-attack-defense-guide",
+      date: "April 2026",
+      component: CtfEverythingBlog,
+    },
+    {
+      title: "What I Learned From My First Attack/Defense CTF Competition",
+      description: "Lessons learned from participating in an Attack/Defense CTF, finishing 2nd.",
+      slug: "my-first-ctf-experience",
+      date: "April 2026",
+      component: CtfFirstCompBlog,
+    },
   ],
 };
 

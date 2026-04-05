@@ -20,6 +20,11 @@ export default function BlogPage() {
       description: "Other tech books and learning experiences.",
       slug: "learning",
     },
+    {
+      name: "Security",
+      description: "Capture The Flag (CTF) insights and security-focused learning.",
+      slug: "security",
+    },
   ];
 
   return (
